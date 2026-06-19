@@ -79,7 +79,11 @@ body{
 }
 
 /* new page and edit page */
-.add-btn, .edit-btn{
+.add-btn, .edit-btn, .del-btn{
     background-color:#fe424d;
     border: none;
+}
+/* show page */
+.buttons{
+    display: flex;
 }

@@ -1,22 +1,29 @@
 <%=layout("layouts/boilerplate")%>
 <body>
+    <div class="container">
     <h3  style="text-align: center; margin: 1rem 0 1rem 0">Listing Details</h3>
-    <div class="card offset-3" style="width:40rem;">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6">
+    <div class="card" >
 
  
-    <ul>
+    
         <img src="<%=listing.image.url%>" class="card-img-top" style="height:20rem;" alt="listing_image">
-        <b style="font-size:1.3rem;"><%= listing.title%></b> <br>     
+        <b style="font-size:1.3rem;"><%= listing.title%></b>    
        <%= listing.description%><br>
         &#8377;<%= listing.price ? listing.price.toLocaleString("en-IN"): "N/A" %>/night<br>
         <%= listing.location%><br>
         <%= listing.country%><br>
-    </ul>
+    
     <div class="buttons">
-    <a class=" btn btn-dark ms-4 mb-4" style="text-decoration:none; color: white" href="/listing/<%=listing._id%>/edit">Edit this listing</a>
+    <a class=" btn btn-dark " style="text-decoration:none; color: white" href="/listing/<%=listing._id%>/edit">Edit this listing</a>
     <form method="POST" action="/listings/<%=listing._id%>?_method=DELETE">
         <button class="ms-4 btn btn-dark del-btn">Delete the listing</button>
     </form>
     </div>
        </div>
+       </div>
+       </div>
+       </div>
+       
 </body>

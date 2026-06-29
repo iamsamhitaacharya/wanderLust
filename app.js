@@ -3,11 +3,12 @@ const app = express();
 const mongoose = require("mongoose");
 const Listing = require("./models/listing.js");
 const path = require("path");
-const methodOverride=require("method-override");
-const ejsMate=require("ejs-mate");
-const ExpressError=require("./utils/ExpressError.js");
-const wrapAsync=require("./utils/wrapAsync.js");
-const {listingSchema}= require("./schema.js");
+const methodOverride = require("method-override");
+const ejsMate = require("ejs-mate");
+const ExpressError = require("./utils/ExpressError.js");
+const wrapAsync = require("./utils/wrapAsync.js");
+const {listingSchema} = require("./schema.js");
+const Review = require("./models/review.js");  
 
 
 app.set("view engine", "ejs");
@@ -135,6 +136,20 @@ app.get("/listings/:id", wrapAsync(async(req,res,next) => {
     res.redirect("/listings");
  })
 );
+
+
+
+//------------------Reviews-------------
+//-------------Post Route----------------
+app.post("/listings/:id/reviews", async(req,res) => {
+    let listing = await Listing.findById(req.params.id);
+    let newReview = new Review(req.body.review);
+    listing.reviews.push(newReview);
+    await newReview.save();
+    await listing.save();
+    console.log("new review saved");
+    res.redirect(`/listings/${lisintgs._id}`);
+});
 
 
 

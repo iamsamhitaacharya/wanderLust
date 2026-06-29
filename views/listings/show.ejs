@@ -1,19 +1,20 @@
 <%=layout("layouts/boilerplate")%>
 <body>
     <div class="container">
-    <h3  style="text-align: center; margin: 1rem 0 1rem 0">Listing Details</h3>
+    <h3 class="mt-4" style="margin-left:26%"><%= listing.title%></h3>
   <div class="row justify-content-center">
     <div class="col-12 col-md-8 col-lg-6">
+      
     <div class="card" >
 
  
     
         <img src="<%=listing.image.url%>" class="card-img-top" style="height:20rem;" alt="listing_image">
-        <b style="font-size:1.3rem;"><%= listing.title%></b>    
-       <%= listing.description%><br>
+       <%=listing.description%><br>
         &#8377;<%= listing.price ? listing.price.toLocaleString("en-IN"): "N/A" %>/night<br>
         <%= listing.location%><br>
         <%= listing.country%><br>
+        <br>
     
     <div class="buttons">
     <a class=" btn btn-dark " style="text-decoration:none; color: white" href="/listing/<%=listing._id%>/edit">Edit this listing</a>

@@ -1,7 +1,7 @@
 <%=layout("layouts/boilerplate")%>
 <body>
     <div class="container">
-    <h3 class="mt-4" style="margin-left:26%"><%= listing.title%></h3>
+    <h3 class="mt-4" style="text-align:center"><%= listing.title%></h3>
   <div class="row justify-content-center">
     <div class="col-12 col-md-8 col-lg-6">
       
@@ -9,7 +9,7 @@
 
  
     
-        <img src="<%=listing.image.url%>" class="card-img-top" style="height:20rem;" alt="listing_image">
+        <img src="<%=listing.image.url%>" class="card-img-top" style="height:18rem;" alt="listing_image">
        <%=listing.description%><br>
         &#8377;<%= listing.price ? listing.price.toLocaleString("en-IN"): "N/A" %>/night<br>
         <%= listing.location%><br>
@@ -25,6 +25,23 @@
        </div>
        </div>
        </div>
+       </div>
+       <hr>
+       <div >
+        <h4 >Leave a review</h4>
+        <form action="/listings/<%=listing.id%>/reviews" method="POST">
+            <div>
+                <label for="rating" class="form-label">Rating</label>
+                <input type="range" min="1" max="5" id="rating" name="review[rating]">
+            </div>
+            <div>
+                <label for="comment" class="form-label">Comments</label>
+                <textarea name="review[comment]" id="comment" class="form-control" rows="8"></textarea>
+            </div>
+            <br>
+            <button class="btn btn-dark mb-4 add-btn">Submit</button>
+        </form>
+        <br>
        </div>
        
 </body>

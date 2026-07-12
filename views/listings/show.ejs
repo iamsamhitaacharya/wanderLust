@@ -3,25 +3,25 @@
     <div class="container">
     <h3 class="mt-4" style="text-align:center"><%= listing.title%></h3>
   <div class="row justify-content-center">
-    <div class="col-12 col-md-8 col-lg-6">
+    <div class="col col-md-6 col-offset-2">
       
     <div class="card listing-card" >
-
- 
-    
         <img src="<%=listing.image.url%>" class="card-img-top" style="height:18rem;" alt="listing_image">
-       <%=listing.description%><br>
-        &#8377;<%= listing.price ? listing.price.toLocaleString("en-IN"): "N/A" %>/night<br>
+       <p>Owned by <i><%=listing.owner.username%></i></p>
+       
+        <p><%=listing.description%></p>
+        <p>&#8377;<%= listing.price ? listing.price.toLocaleString("en-IN"): "N/A" %>/night</p>
         <%= listing.location%><br>
         <%= listing.country%><br>
         <br>
-    
+    <% if(currUser && currUser._id.equals(listing.owner._id)) { %>
     <div class="buttons">
     <a class=" btn btn-dark " style="text-decoration:none; color: white" href="/listings/<%=listing._id%>/edit">Edit this listing</a>
     <form method="POST" action="/listings/<%=listing._id%>?_method=DELETE">
         <button class="ms-4 btn btn-dark del-btn">Delete the listing</button>
     </form>
     </div>
+    <%}%>
        </div>
        </div>
        </div>

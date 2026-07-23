@@ -1,4 +1,6 @@
 const Listing = require("../models/listing");
+const { getCoordinates } = require("../public/js/geocode.js");
+
 
 module.exports.index = async (req,res) => {
     const allListings = await Listing.find({});
@@ -12,7 +14,6 @@ module.exports.renderNewForm = (req,res) => {
 module.exports.addNewListing = async (req,res,next) => {
     let url = req.file.path;
     let filename = req.file.filename;
-
     const newlisting = new Listing(req.body.listing);
     newlisting.owner = req.user._id;  
     newlisting.image = { filename, url}; 
@@ -35,8 +36,9 @@ module.exports.showListing = async(req,res,next) => {
         req.flash("error", "Listing you requested for does not exist!");
         return res.redirect("/listings");
     }
+    const coordinates = await getCoordinates(listing.location, listing.country);
     //  console.log(listing);
-    res.render("listings/show.ejs", {listing});
+    res.render("listings/show.ejs", {listing, coordinates});
    
 };
 

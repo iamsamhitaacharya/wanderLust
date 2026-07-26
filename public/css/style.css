@@ -51,7 +51,7 @@ body{
 }
 
 /* cards */
-.card{
+.listing-card{
     border: none;
     margin-bottom: 1rem;
     
@@ -87,3 +87,49 @@ body{
 .buttons{
     display: flex;
 }
+
+.container-2{
+    display: flex;
+    justify-content:space-evenly;
+}
+
+/* map */
+#map { 
+    height: 500px; 
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom: 5%;
+    margin-top: 2%;
+}
+
+@media (max-width: 990px) {
+    #map { height: 300px; }
+}
+@media (max-width: 780px) {
+    #map { height: 250px; }
+}
+@media (max-width: 500px) {
+    #map { height: 200px; }
+}
+
+/* navbar */
+  .btn-search{
+    background-color: #fe424d;
+    color: #fff;
+    border-radius: 25px;
+    padding: 0 1rem 0 1rem;
+  }
+    .btn-search:hover{
+    background-color: #fe424d;
+    color: #fff;
+  }
+  .btn-search i {
+   display: inline;
+   margin-right:0.5rem;
+  }
+  .search-input{
+    border-radius: 25px;
+    padding: 0.5rem 3rem 0.5rem 4rem;
+    
+    height:2.5rem;
+  }

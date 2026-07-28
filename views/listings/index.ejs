@@ -3,15 +3,32 @@
 <style>
   #filters{
     display: flex;
-    flex-wrap: wrap;
+    /* flex-wrap: nowrap; */
     align-items: center;
   }
+  .filters-scroll{
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  flex: 1 1 auto;
+  min-width: 0;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; 
+  -ms-overflow-style: none;  
+  padding-bottom: 0.25rem;
+}
+.filters-scroll::-webkit-scrollbar-thumb{
+  background: #ddd;
+  border-radius: 3px;
+}
   .filter{
     text-align: center;
     margin-right:2.5rem;
     margin-top: 2rem;
     opacity: 0.7;
     cursor: pointer;
+    flex: 0 0 auto;
     
   }
   .filter:hover{
@@ -26,8 +43,9 @@
     border-radius: 1rem;
     height: 3rem;
     padding: 0.7rem;
-    margin-left: 3rem;
+    margin-left: 2rem;
     margin-top: 1rem;
+    flex: 0 0 auto;
   }
   .with-tax-info{
     display: none;
@@ -36,51 +54,80 @@
   #switchCheckDefault{
     cursor: pointer;
   }
+  .filter-link{
+  text-decoration: none;
+  color: inherit;
+  display: block;   /* makes the whole filter box clickable, not just the text */
+}
 </style>
-    <div id="filters">
-      <div class="filter">
-        <div><i class="fa-solid fa-fire"></i></div>
-        <p>Trending</p>
-      </div>
-      <div class="filter">
-        <div><i class="fa-solid fa-bed"></i></div>
-        <p>Rooms</p>
-      </div>
-      <div class="filter">
-        <div><i class="fa-solid fa-mountain-city"></i></div>
-        <p>Iconic cities</p>
-      </div>
-      <div class="filter">
-        <div><i class="fa-brands fa-fort-awesome"></i></div>
-        <p>Castles</p>
-      </div>
-      <div class="filter">
-        <div><i class="fa-solid fa-mountain"></i></div>
-        <p>Mountains</p>
-      </div>
-      <div class="filter">
-        <div><i class="fa-solid fa-person-swimming"></i></div>
-        <p>Amazing pools</p>
-      </div>
-      <div class="filter">
-        <div><i class="fa-solid fa-campground"></i></div>
-        <p>Camping</p>
-      </div>
-      <div class="filter">
-        <div><i class="fa-solid fa-cow"></i></div>
-        <p>Farms</p>
-      </div>
-      <div class="filter">
-        <div><i class="fa-solid fa-snowflake"></i></div>
-        <p>Arctic</p>
-      </div>
-      <div class="filter">
-        <div><i class="fa-solid fa-baseball-bat-ball"></i></div>
-        <p>Play</p>
-      </div>
-      <div class="filter">
-        <div><i class="fa-solid fa-umbrella-beach"></i></div>
-        <p>Beach</p>
+    <div id="filters" >
+      <div class="filters-scroll">
+        <a href="/listings?category=trending" class="filter-link">
+          <div class="filter">
+            <div><i class="fa-solid fa-fire"></i></div>
+            <p>Trending</p>
+          </div>
+        </a>
+        <a href="/listings?category=rooms" class="filter-link">
+          <div class="filter">
+            <div><i class="fa-solid fa-bed"></i></div>
+            <p>Rooms</p>
+          </div>
+        </a>
+        <a href="/listings?category=cities" class="filter-link">
+          <div class="filter">
+            <div><i class="fa-solid fa-mountain-city"></i></div>
+            <p>Iconic cities</p>
+          </div>
+        </a>
+        <a href="/listings?category=castles" class="filter-link">
+          <div class="filter">
+            <div><i class="fa-brands fa-fort-awesome"></i></div>
+            <p>Castles</p>
+          </div>
+        </a>
+        <a href="/listings?category=mountains" class="filter-link">
+          <div class="filter">
+            <div><i class="fa-solid fa-mountain"></i></div>
+            <p>Mountains</p>
+          </div>
+        </a>
+        <a href="/listings?category=pools" class="filter-link">
+          <div class="filter">
+            <div><i class="fa-solid fa-person-swimming"></i></div>
+            <p>Amazing pools</p>
+          </div>
+        </a>
+        <a href="/listings?category=camping" class="filter-link">
+          <div class="filter">
+            <div><i class="fa-solid fa-campground"></i></div>
+            <p>Camping</p>
+          </div>
+        </a>
+        <a href="/listings?category=farms" class="filter-link">
+          <div class="filter">
+            <div><i class="fa-solid fa-cow"></i></div>
+            <p>Farms</p>
+          </div>
+        </a>
+        <a href="/listings?category=arctic" class="filter-link">
+          <div class="filter">
+            <div><i class="fa-solid fa-snowflake"></i></div>
+            <p>Arctic</p>
+          </div>
+        </a>
+        <a href="/listings?category=play" class="filter-link">
+          <div class="filter">
+            <div><i class="fa-solid fa-baseball-bat-ball"></i></div>
+            <p>Play</p>
+          </div>
+        </a>
+        <a href="/listings?category=beach" class="filter-link">
+          <div class="filter">
+            <div><i class="fa-solid fa-umbrella-beach"></i></div>
+            <p>Beach</p>
+          </div>
+        </a>
       </div>
       <div class="tax-toggle">
         <div class="form-check-reverse form-switch">
@@ -88,8 +135,6 @@
           <label class="form-check-label" for="switchCheckDefault">Display total after taxes</label>
         </div>
       </div>
-
-
     </div>
 
     <div class="row row-cols-lg-5 row-cols-md-4 row-cols-sm-3 row-cols-2 mt-3">

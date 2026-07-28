@@ -1,5 +1,5 @@
 <%=layout("layouts/boilerplate")%>
-<body>
+
     <div class="row">
         <div class="col col-md-8 offset-md-2">
     <h3 class="mt-4 mb-4">Fill the form to edit listing</h3>
@@ -16,6 +16,50 @@
              <div class="invalid-feedback">Fill out the description!</div>
         </div>
         <div class="mb-4">
+            <feildset>
+                <p class="form-label">Your property falls under categories:</p>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="rooms" name="listing[categories]" value="rooms" <% if (listing.categories && listing.categories.includes("rooms")) { %> checked <% } %>>
+                    <label class="form-check-label" for="rooms">Rooms</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="pools" name="listing[categories]" value="pools" <% if (listing.categories && listing.categories.includes("pools")) { %> checked <% } %> >
+                    <label class="form-check-label" for="pools">Pools</label>
+                </div>
+               <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="play" name="listing[categories]" value="play" <% if (listing.categories && listing.categories.includes("play")) { %> checked <% } %> >
+                    <label class="form-check-label" for="play">Play</label>
+                </div>
+               <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="arctic" name="listing[categories]" value="arctic" <% if (listing.categories && listing.categories.includes("arctic")) { %> checked <% } %> >
+                    <label class="form-check-label" for="arctic">Arctic</label>
+                </div>
+               <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="camping" name="listing[categories]" value="camping" <% if (listing.categories && listing.categories.includes("camping")) { %> checked <% } %> >
+                    <label class="form-check-label" for="camping">Camping</label>
+                </div>
+               <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="mountains" name="listing[categories]" value="mountains" <% if (listing.categories && listing.categories.includes("mountains")) { %> checked <% } %> >
+                    <label class="form-check-label" for="mountains">Mountains</label>
+                </div>
+               <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="beach" name="listing[categories]" value="beach" <% if (listing.categories && listing.categories.includes("beach")) { %> checked <% } %> >
+                    <label class="form-check-label" for="beach">Beach</label>
+               </div>
+               <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="farms" name="listing[categories]" value="farms" <% if (listing.categories && listing.categories.includes("farms")) { %> checked <% } %> >
+                    <label class="form-check-label" for="farms">Farms</label>
+                </div>
+               <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="castles" name="listing[categories]" value="castles" <% if (listing.categories && listing.categories.includes("castles")) { %> checked <% } %> >
+                    <label class="form-check-label" for="castles">Castles</label>
+                </div>
+               <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="cities" name="listing[categories]" value="cities" <% if (listing.categories && listing.categories.includes("cities")) { %> checked <% } %> >
+                    <label class="form-check-label" for="cities">Cities</label>
+                </div>
+            </feildset>
+        <div class="mb-4 mt-4">
             <div>Original listing image</div>
             <img src="<%=originalImage%>" style="height: 250px; width:250px">
         </div>
@@ -45,5 +89,6 @@
         <button class="btn btn-dark mb-4 edit-btn">Edit</button>
     </form>
     </div>
-    </div>
-</body>
+ </div>
+</div>
+

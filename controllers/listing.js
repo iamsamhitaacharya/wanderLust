@@ -2,9 +2,18 @@ const Listing = require("../models/listing");
 const { getCoordinates } = require("../public/js/geocode.js");
 
 
-module.exports.index = async (req,res) => {
-    const allListings = await Listing.find({});
-    res.render("listings/index.ejs", {allListings});
+module.exports.index = async (req, res) => {
+    const { category } = req.query;
+    let allListings;
+
+    if (!category || category === "trending") {
+        allListings = await Listing.find({});
+    } else {
+        allListings = await Listing.find({ categories: { $in: [category] } });
+    }
+    console.log("category received:", category);
+    console.log("listings found:", allListings.length);
+    res.render("listings/index.ejs", { allListings });
 };
 
 module.exports.renderNewForm = (req,res) => {
@@ -12,6 +21,11 @@ module.exports.renderNewForm = (req,res) => {
 };
 
 module.exports.addNewListing = async (req,res,next) => {
+    if(!req.body.listing.categories){
+        req.body.categories = [];
+    }else if(typeof req.body.listing.categories === "string"){
+        req.body.listing.categories = [req.body.listing.categories];
+    }
     let url = req.file.path;
     let filename = req.file.filename;
     const newlisting = new Listing(req.body.listing);
@@ -56,6 +70,11 @@ module.exports.editListing = async (req,res,next) => {
 
  module.exports.updateListing = async (req,res,next) => {
     let {id}=req.params;
+    if(!req.body.listing.categories){
+        req.body.categories = [];
+    }else if(typeof req.body.listing.categories === "string"){
+        req.body.listing.categories = [req.body.listing.categories];
+    }
     let listing = await Listing.findByIdAndUpdate(id, {...req.body.listing});
     if(typeof req.file !=="undefined"){
     let url = req.file.path;

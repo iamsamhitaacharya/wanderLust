@@ -194,3 +194,9 @@ body{
   color: inherit;
   display: block;   /* makes the whole filter box clickable, not just the text */
 }
+  @media (max-width: 940px) {
+    .search-input { padding: 0 0 0 0.5rem; font-size: 0.9rem};
+    .btn-search{ font-size:0.9rem; };
+    .explore { font-size:0.9rem; };
+}
+

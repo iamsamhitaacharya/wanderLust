@@ -16,12 +16,12 @@
       
       <!-- 1. Left Nav Link -->
       <div class="navbar-nav me-auto mb-2 mb-md-0">
-        <a class="nav-link" href="/listings">Explore</a>
+        <a class="nav-link explore" href="/listings">Explore</a>
       </div>
 
       <!-- 2. Middle Search Form -->
-      <form class="d-flex my-2 my-md-0 me-md-auto search-form ms-auto" role="search">
-        <input class="form-control me-2 search-input" type="search" placeholder="Search your destinations" />
+      <form class="d-flex my-2 my-md-0 me-md-auto search-form ms-auto" role="search" method="GET" action="/listings">
+        <input class="form-control me-2 search-input" type="search" placeholder="Search your destinations" name="search"/>
         <button class="btn btn-search" type="submit">
           <i class="fa-solid fa-magnifying-glass me-1"></i>Search
         </button>

@@ -3,17 +3,26 @@ const { getCoordinates } = require("../public/js/geocode.js");
 
 
 module.exports.index = async (req, res) => {
-    const { category } = req.query;
-    let allListings;
-
-    if (!category || category === "trending") {
-        allListings = await Listing.find({});
-    } else {
-        allListings = await Listing.find({ categories: { $in: [category] } });
+    const { category, search } = req.query;
+    let filter = {};
+    if (category && category !== "trending") {
+        filter.categories = { $in: [category] };
     }
-    console.log("category received:", category);
-    console.log("listings found:", allListings.length);
-    res.render("listings/index.ejs", { allListings });
+    if (search) {
+        const regex = new RegExp(search, "i");
+        filter.$or = [
+            { title: regex },
+            { location: regex },
+            { country: regex },
+        ];
+    }
+    const allListings = await Listing.find(filter);
+
+    // console.log("category received:", category);
+    // console.log("search received:", search);
+    // console.log("listings found:", allListings.length);
+
+    res.render("listings/index.ejs", { allListings});
 };
 
 module.exports.renderNewForm = (req,res) => {

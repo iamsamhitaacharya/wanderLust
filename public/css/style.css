@@ -199,4 +199,7 @@ body{
     .btn-search{ font-size:0.9rem; };
     .explore { font-size:0.9rem; };
 }
+@media(max-width:940px){
+    .show-after-tax{ font-size:0.7rem;};
+}
 

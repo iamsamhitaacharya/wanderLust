@@ -8,7 +8,7 @@ module.exports.index = async (req, res) => {
     if (category && category !== "trending") {
         filter.categories = { $in: [category] };
     }
-    if (search) {
+    else if (search) {
         const regex = new RegExp(search, "i");
         filter.$or = [
             { title: regex },
@@ -16,13 +16,14 @@ module.exports.index = async (req, res) => {
             { country: regex },
         ];
     }
+    
     const allListings = await Listing.find(filter);
 
     // console.log("category received:", category);
     // console.log("search received:", search);
     // console.log("listings found:", allListings.length);
 
-    res.render("listings/index.ejs", { allListings});
+    res.render("listings/index.ejs", { allListings, category, search});
 };
 
 module.exports.renderNewForm = (req,res) => {

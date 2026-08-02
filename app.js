@@ -71,9 +71,9 @@ const sessionOptions = {
 
 
 
-// app.get("/", (req, res) => {
-//     res.send("this is your root");
-// });
+app.get("/", (req, res) => {
+    res.redirect("/listings");
+});
 
 
 
